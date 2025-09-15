@@ -45,7 +45,7 @@ using System.Numerics;
 namespace UnitGenerator
 {
     [AttributeUsage(AttributeTargets.Struct, AllowMultiple = false)]
-    internal class UnitOfAttribute : Attribute
+    public class UnitOfAttribute : Attribute
     {
         public Type Type { get; }
         public UnitGenerateOptions Options { get; }
@@ -61,7 +61,7 @@ namespace UnitGenerator
     
 #if NET7_0_OR_GREATER
     [AttributeUsage(AttributeTargets.Struct, AllowMultiple = false)]
-    internal class UnitOfAttribute<T> : Attribute
+    public class UnitOfAttribute<T> : Attribute
     {
         public Type Type { get; }
         public UnitGenerateOptions Options { get; }
@@ -77,7 +77,7 @@ namespace UnitGenerator
 #endif
 
     [Flags]
-    internal enum UnitGenerateOptions
+    public enum UnitGenerateOptions
     {
         None = 0,
         ImplicitOperator = 1,
@@ -97,7 +97,7 @@ namespace UnitGenerator
     }
 
     [Flags]
-    internal enum UnitArithmeticOperators
+    public enum UnitArithmeticOperators
     {
         All = Addition | Subtraction | Multiply | Division | Increment | Decrement,
         Addition = 1,
