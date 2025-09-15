@@ -237,7 +237,7 @@ namespace {{ns}}
 
         sb.AppendLine($$"""
     [System.ComponentModel.TypeConverter(typeof({{unitTypeName}}TypeConverter))]
-    readonly partial struct {{unitTypeName}} 
+    partial struct {{unitTypeName}} 
         : IEquatable<{{unitTypeName}}>
 """);
         if (prop.HasFlag(UnitGenerateOptions.Comparable))
@@ -351,9 +351,7 @@ namespace {{ns}}
 
         sb.AppendLine($$"""
     {
-        readonly {{innerTypeName}} value;
-
-        public {{innerTypeName}} AsPrimitive() => value;
+        public {{innerTypeName}} value;
 
         public {{unitTypeName}}({{innerTypeName}} value)
         {
@@ -1182,7 +1180,7 @@ namespace {{ns}}
 
                     if (destinationType == ValueType)
                     {
-                        return wrappedValue.AsPrimitive();
+                        return wrappedValue.value;
                     }
                 }
 
