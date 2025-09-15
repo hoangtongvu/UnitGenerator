@@ -94,6 +94,7 @@ namespace UnitGenerator
         WithoutComparisonOperator = 1 << 11,
         JsonConverterDictionaryKeySupport = 1 << 12,
         Normalize = 1 << 13,
+        MinMaxMethod_UnityMathematics = 1 << 14,
     }
 
     [Flags]
@@ -699,6 +700,24 @@ namespace {{ns}}
         public static {{unitTypeName}} Max({{unitTypeName}} x, {{unitTypeName}} y)
         {
             return new {{unitTypeName}}(Math.Max(x.value, y.value));
+        }
+
+""");
+        }
+
+        if (prop.HasFlag(UnitGenerateOptions.MinMaxMethod_UnityMathematics))
+        {
+            sb.AppendLine($$"""
+        // UnitGenerateOptions.MinMaxMethod_UnityMathematics
+
+        public static {{unitTypeName}} Min({{unitTypeName}} x, {{unitTypeName}} y)
+        {
+            return new {{unitTypeName}}(Unity.Mathematics.math.min(x.value, y.value));
+        }
+
+        public static {{unitTypeName}} Max({{unitTypeName}} x, {{unitTypeName}} y)
+        {
+            return new {{unitTypeName}}(Unity.Mathematics.math.max(x.value, y.value));
         }
 
 """);
