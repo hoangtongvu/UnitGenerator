@@ -426,12 +426,22 @@ namespace {{ns}}
         
         public static bool operator ==({{unitTypeName}} x, {{unitTypeName}} y)
         {
-            return System.Collections.Generic.EqualityComparer<{{innerTypeName}}>.Default.Equals(x.value, y.value);
+            return x.value == y.value;
         }
 
         public static bool operator !=({{unitTypeName}} x, {{unitTypeName}} y)
         {
-            return !System.Collections.Generic.EqualityComparer<{{innerTypeName}}>.Default.Equals(x.value, y.value);
+            return x.value != y.value;
+        }
+
+        public static bool operator ==({{unitTypeName}} x, {{innerTypeName}} y)
+        {
+            return x.value == y;
+        }
+
+        public static bool operator !=({{unitTypeName}} x, {{innerTypeName}} y)
+        {
+            return x.value != y;
         }
 
         public override int GetHashCode()
